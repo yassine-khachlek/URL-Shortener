@@ -1,0 +1,17 @@
+{
+  "name": "url-shortener",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Yassine Khachlek <yassine.khachlek@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/yassine-khachlek/url-shortener",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
