@@ -9,14 +9,17 @@
 	</div>
 	<script type="text/javascript">
 		var redirectAfter = 5;
-		setInterval(function(){
+
+		var interval = setInterval(function(){
 			redirectAfter--;
 
 			if(redirectAfter<=0){
 				window.location.href='{{ $url->url }}';
+				clearInterval(interval);
 			}
 
 			document.getElementById('info').innerHTML= 'Redirect after ' + redirectAfter + ' seconds...';
+
 		}, 1000);
 	</script>
 </body>

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUrlsTable extends Migration
+class CreateUserAgentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,11 @@ class CreateUrlsTable extends Migration
      */
     public function up()
     {
-        Schema::create((new App\Url)->getTable(), function (Blueprint $table) {
+        Schema::create((new App\UserAgent)->getTable(), function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('user_id')->unsigned();
-            $table->text('url');
+            $table->text('user_agent');
             $table->timestamps();
-
-            $table->foreign('user_id')->references('id')->on((new App\User)->getTable());
         });
-
     }
 
     /**
@@ -31,6 +27,6 @@ class CreateUrlsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists((new App\Url)->getTable());
+        Schema::dropIfExists((new App\UserAgent)->getTable());
     }
 }
