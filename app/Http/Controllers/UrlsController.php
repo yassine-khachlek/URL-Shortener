@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
 use App\Url;
+use Validator;
 
 class UrlsController extends Controller
 {
@@ -28,7 +28,7 @@ class UrlsController extends Controller
      */
     public function create()
     {
-        //
+        return view('urls.create');
     }
 
     /**
@@ -39,7 +39,25 @@ class UrlsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'url' => 'required|url',
+        ]);
+
+        if ($validator->fails()) {
+
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+
+        }
+
+        $url = new Url;
+        $url->user_id = Auth::user()->id;
+        $url->url = $request->get('url');
+        
+        $url->save();
+
+        return redirect(route('urls.index'));
     }
 
     /**

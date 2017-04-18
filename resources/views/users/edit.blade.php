@@ -45,14 +45,21 @@
         @endif
     </div>
 
-	<div class="row">
-		<div class="col-md-12">
-			<div class="form-group">
-				<button type="submit" class="btn btn-default btn-block btn-lg">
-					Update profile
-				</button>
-			</div>
-		</div>
-	</div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <a href="{{ Route::has('home') ? route('home') : '#' }}" class="btn btn-lg btn-block btn-default">
+          CANCEL
+        </a>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <button type="submit" class="btn btn-danger btn-block btn-lg">
+          SAVE
+        </button>
+      </div>
+    </div>
+  </div>
 </form>
 @append

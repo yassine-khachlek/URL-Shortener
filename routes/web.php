@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => 'auth'], function () {
 
@@ -31,6 +31,8 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::group(['prefix' => 'urls', 'as' => 'urls.'], function () {
 
 		Route::get('/', 'UrlsController@index')->name('index');
+		Route::get('/create', 'UrlsController@create')->name('create');
+		Route::post('/', 'UrlsController@store')->name('store');
 		Route::delete('/{id}', 'UrlsController@destroy')->name('destroy');
 
 	});
