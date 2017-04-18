@@ -18,3 +18,14 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+
+Route::group(['middleware' => 'auth'], function () {
+
+	Route::group(['prefix' => 'urls', 'as' => 'urls.'], function () {
+
+		Route::get('/', 'UrlsController@index')->name('index');
+		Route::delete('/{id}', 'UrlsController@destroy')->name('destroy');
+
+	});
+
+});
