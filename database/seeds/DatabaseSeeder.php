@@ -16,5 +16,6 @@ class DatabaseSeeder extends Seeder
         $this->call(UrlsTableSeeder::class);
         $this->call(UserAgentsTableSeeder::class);
         $this->call(UrlAccessLogsTableSeeder::class);
+        $this->call(GeoLitesTableSeeder::class);
     }
 }
