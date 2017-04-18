@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\User;
+use App\Url;
+
 class HomeController extends Controller
 {
     /**
@@ -23,6 +26,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return (new UrlsController)->index();
+        $users_count = User::count();
+        $urls_count = Url::count();
+
+        return view('home', compact('users_count', 'urls_count'));
     }
 }
