@@ -6,6 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Url extends Model
 {
+    protected $appends = ['url_short'];
+
+    public function getUrlShortAttribute()
+    {
+        return url(dechex($this->id));
+    }
+
     /**
      * Get the user that owns the url.
      */

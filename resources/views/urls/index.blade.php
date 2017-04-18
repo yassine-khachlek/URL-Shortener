@@ -17,6 +17,9 @@
             ID
         </th>
         <th>
+            URL SHORT
+        </th>
+        <th>
             URL
         </th>
         <th>
@@ -31,6 +34,9 @@
         <tr>
             <td>
                 {{ $url->id }}
+            </td>
+            <td>
+                {{ $url->url_short }}
             </td>
             <td>
                 {{ $url->url }}
