@@ -23,6 +23,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 	Route::group(['prefix' => 'users', 'as' => 'users.'], function () {
 
+		Route::get('/', 'UsersController@index')->name('index');
 		Route::get('/{id}/edit', 'UsersController@edit')->name('edit');
 		Route::patch('/{id}', 'UsersController@update')->name('update');
 
