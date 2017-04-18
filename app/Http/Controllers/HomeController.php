@@ -29,6 +29,11 @@ class HomeController extends Controller
         $users_count = User::count();
         $urls_count = Url::count();
 
-        return view('home', compact('users_count', 'urls_count'));
+        /*
+        * TODO: URl views count is not opimized
+        */
+        $url = Url::get();
+
+        return view('home', compact('users_count', 'urls_count', 'url'));
     }
 }

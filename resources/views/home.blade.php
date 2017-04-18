@@ -49,4 +49,21 @@
         </div>
     </div>
 </div>
+
+<div class="row">
+    
+    <div class="col-lg-12 col-md-12">
+        @include('commons.widgets.charts.chartjs.line', [
+            'id'    =>  'url_views',
+            'label' =>  'URL views',
+            'labels'=>  $url->map(function($item){
+                            return $item->url;
+                        }),
+            'data'  => $url->map(function($item){
+                            return $item->accessLogs->count();
+                        }),
+        ])
+    </div>
+
+</div>
 @append

@@ -13,4 +13,12 @@ class Url extends Model
     {
         return $this->belongsTo('App\User');
     }
+
+    /**
+     * Get the user that owns the url.
+     */
+    public function accessLogs()
+    {
+        return $this->hasMany('App\UrlAccessLog');
+    }
 }
