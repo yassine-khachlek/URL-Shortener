@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 
 use Illuminate\Support\Facades\Auth;
-use \App\Country;
+use \App\GeoLite;
 use \App\UserAgent;
 use \App\Url;
 use \App\UrlAccessLog As Log;
@@ -30,7 +30,8 @@ class UrlAccessLog
         /*
         * TODO: find country by ip
         */
-        $url_access_log->country_code = Country::where('code', 'tn')->first()->code;
+        $geo_lite = GeoLite::where('start', '>=', $request->ip())->where('end', '<=', $request->ip())->first();
+        $url_access_log->country_code = $geo_lite ? $geo_lite->country_code : null;
 
         $url_access_log->user()->associate(Auth::user());
         
