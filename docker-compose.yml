@@ -1,0 +1,39 @@
+version: '2'
+
+services:
+
+    web:
+        build:
+            context: ./dockerfiles/
+            dockerfile: web.docker
+        volumes:
+            - ./:/var/www
+        ports:
+            - "8000:80"
+        links:
+            - app
+
+    app:
+        build:
+            context: ./dockerfiles/
+            dockerfile: app.docker
+        volumes:
+            - ./:/var/www
+        environment:
+            - "DB_HOST=database"
+            - "DB_PORT=3306"
+        links:
+            - database
+
+    database:
+        build:
+            context: ./dockerfiles/
+            dockerfile: database.docker
+        command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+        volumes:
+            - ./database/data:/var/lib/mysql
+        environment:
+            - "MYSQL_DATABASE=url_shortener"
+            - "MYSQL_ROOT_PASSWORD=secret"
+        ports:
+            - "33061:3306"
