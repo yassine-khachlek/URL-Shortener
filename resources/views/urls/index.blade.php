@@ -20,6 +20,9 @@
             URL
         </th>
         <th>
+            Views
+        </th>
+        <th>
 
         </th>
     </thead>
@@ -31,6 +34,9 @@
             </td>
             <td>
                 {{ $url->url }}
+            </td>
+            <td>
+                {{ $url->views_count }}
             </td>
             <td>
 				<form action="{{ Route::has('urls.destroy') ? route('urls.destroy', ['id' => $url->id]) : '#' }}" method="POST" onsubmit="return confirm('Do you really want to delete the url?');" class="form-inline pull-right">
