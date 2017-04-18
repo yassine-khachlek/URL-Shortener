@@ -58,7 +58,7 @@
                             return $item->url;
                         }),
             'data'  => $url->map(function($item){
-                            return $item->accessLogs->count();
+                            return $item->views_count;
                         }),
         ])
     </div>

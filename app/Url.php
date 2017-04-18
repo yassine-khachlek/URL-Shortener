@@ -15,6 +15,14 @@ class Url extends Model
     }
 
     /**
+     * Get the url that owns the log.
+     */
+    public function url()
+    {
+        return $this->belongsTo('App\Url');
+    }
+
+    /**
      * Get the user that owns the url.
      */
     public function accessLogs()
