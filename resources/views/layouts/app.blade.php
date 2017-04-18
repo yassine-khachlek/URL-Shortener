@@ -10,17 +10,27 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
+    {{--
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    --}}
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="{{ asset('components/bootstrap/dist/css/bootstrap.min.css') }}">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="{{ asset('components/bootstrap/dist/css/bootstrap-theme.min.css') }}">
 
     <link href="{{ asset('components/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
 
+    {{--
     <!-- Scripts -->
     <script>
         window.Laravel = {!! json_encode([
             'csrfToken' => csrf_token(),
         ]) !!};
     </script>
+    --}}
 
     @yield('styles')
 
@@ -106,8 +116,13 @@
         </div>
     </div>
 
+    {{--
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    --}}
+
+    <script src="{{ asset('components/jquery/dist/jquery.min.js') }}"></script>
+    <script src="{{ asset('components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
 
     @yield('scripts')
 </body>
