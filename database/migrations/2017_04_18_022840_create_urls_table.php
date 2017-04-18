@@ -19,6 +19,8 @@ class CreateUrlsTable extends Migration
             $table->text('url');
             $table->integer('views_count')->unsigned()->default(0);
             $table->timestamps();
+            $table->softDeletes();
+
 
             $table->foreign('user_id')->references('id')->on((new App\User)->getTable());
         });

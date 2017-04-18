@@ -11,7 +11,7 @@ class UrlAccessLog extends Model
      */
     public function user()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\User', 'user_id', 'id');
     }
 
     /**
@@ -19,7 +19,7 @@ class UrlAccessLog extends Model
      */
     public function url()
     {
-        return $this->belongsTo('App\Url');
+        return $this->belongsTo('App\Url', 'url_id', 'id');
     }
 
     /**
@@ -27,7 +27,7 @@ class UrlAccessLog extends Model
      */
     public function userAgent()
     {
-        return $this->belongsTo('App\UserAgent');
+        return $this->belongsTo('App\UserAgent', 'user_agent_id', 'id');
     }
 
     /**

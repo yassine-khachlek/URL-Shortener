@@ -3,9 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Url extends Model
 {
+    use SoftDeletes;
+
     protected $appends = ['url_short'];
 
     public function getUrlShortAttribute()
@@ -18,7 +21,7 @@ class Url extends Model
      */
     public function user()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\User', 'user_id', 'id');
     }
 
     /**
@@ -26,7 +29,7 @@ class Url extends Model
      */
     public function url()
     {
-        return $this->belongsTo('App\Url');
+        return $this->belongsTo('App\Url', 'url_id', 'id');
     }
 
     /**
@@ -34,6 +37,6 @@ class Url extends Model
      */
     public function accessLogs()
     {
-        return $this->hasMany('App\UrlAccessLog');
+        return $this->hasMany('App\UrlAccessLog', 'url_id', 'id');
     }
 }

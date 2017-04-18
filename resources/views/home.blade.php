@@ -49,6 +49,17 @@
 </div>
 
 <div class="row">
+    <div class="col-md-12">
+        <div class="form-group">
+            <a href="{{ Route::has('url-access-logs.index') ? route('url-access-logs.index') : '#' }}" class="btn btn-lg btn-primary btn-block">
+                <i class="fa fa-history" aria-hidden="true"></i>
+                Views logs
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="row">
     
     <div class="col-lg-12 col-md-12">
         @include('commons.widgets.charts.chartjs.line', [
