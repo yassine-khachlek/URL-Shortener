@@ -32,3 +32,11 @@ $factory->define(App\Url::class, function (Faker\Generator $faker) {
         'url' => $faker->url,
     ];
 });
+
+$factory->define(App\UserAgent::class, function (Faker\Generator $faker) {
+    static $user_agent;
+
+    return [
+        'user_agent' => $user_agent ?: $faker->userAgent,
+    ];
+});
