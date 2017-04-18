@@ -12,6 +12,16 @@
 */
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
+$factory->define(App\Country::class, function (Faker\Generator $faker) {
+    static $code;
+    static $name;
+
+    return [
+        'code' => strtolower($faker->countryCode),
+        'name' => $faker->country,
+    ];
+});
+
 $factory->define(App\User::class, function (Faker\Generator $faker) {
     static $password;
 
