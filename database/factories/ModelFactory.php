@@ -50,3 +50,19 @@ $factory->define(App\UserAgent::class, function (Faker\Generator $faker) {
         'user_agent' => $user_agent ?: $faker->userAgent,
     ];
 });
+
+$factory->define(App\UrlAccessLog::class, function (Faker\Generator $faker) {
+    static $user_id;
+    static $url_id;
+    static $user_agent_id;
+    static $country_code;
+    static $ip;
+
+    return [
+        'user_id' => $user_id ?: App\User::inRandomOrder()->first()->id,
+        'url_id' => $url_id ?: App\Url::inRandomOrder()->first()->id,
+        'user_agent_id' => $user_agent_id ?: App\UserAgent::inRandomOrder()->first()->id,
+        'country_code' => $country_code ?:  App\Country::inRandomOrder()->first()->code,
+        'ip' => $ip ?: $faker->ipv4,
+    ];
+});
