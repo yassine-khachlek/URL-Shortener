@@ -42,4 +42,6 @@ Route::group(['middleware' => 'auth'], function () {
 /**
 * Redirect url, available for everyone
 */
-Route::get('/{id}', 'UrlsController@redirect')->name('urls.redirect');
+Route::group(['middleware' => 'url.access.log'], function () {
+	Route::get('/{id}', 'UrlsController@redirect')->name('urls.redirect');
+});

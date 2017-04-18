@@ -77,9 +77,10 @@ class UrlsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function redirect($id)
+    public function redirect(Request $request, $id)
     {
-        return view('urls.redirect', ['url' => Url::findOrFail($id)]);
+        $url = Url::findOrFail($id);
+        return view('urls.redirect', compact('url'));
     }
 
     /**
