@@ -37,6 +37,12 @@ Route::group(['middleware' => 'auth'], function () {
 
 	});
 
+	Route::group(['prefix' => 'url-access-logs', 'as' => 'url-access-logs.'], function () {
+
+		Route::get('/', 'UrlAccessLogsController@index')->name('index');
+
+	});
+
 });
 
 /**
