@@ -4,7 +4,7 @@
 <table class="table table-striped table-hover">
     <thead>
         <th>
-            ID
+            DATE TIME
         </th>
         <th>
             IP
@@ -26,14 +26,14 @@
     @foreach($url_access_logs as $url_access_log)
         <tr>
             <td>
-                {{ $url_access_log->id }}
+                {{ $url_access_log->created_at }}
             </td>
             <td>
             	{{ $url_access_log->ip }}
             </td>
             <td>
             	@if($url_access_log->country)
-            		{{ $url_access_log->country->name }}
+            		<span class="flag-icon flag-icon-{{ $url_access_log->country->code }}"></span>
             	@endif
             </td>
             <td>
@@ -59,4 +59,8 @@
 @if( method_exists($url_access_logs, 'links') )
     {{ $url_access_logs->links() }}
 @endif
+@append
+
+@section('styles')
+<link href="{{ asset('components/flag-icon-css/css/flag-icon.min.css') }}" rel="stylesheet">
 @append
