@@ -72,6 +72,17 @@ class UrlsController extends Controller
     }
 
     /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function redirect($id)
+    {
+        return view('urls.redirect', ['url' => Url::findOrFail($id)]);
+    }
+
+    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
@@ -104,6 +115,6 @@ class UrlsController extends Controller
     {
         Url::findOrfail($id)->delete();
 
-        return back();
+        return redirect(route('urls.index'));
     }
 }

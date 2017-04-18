@@ -36,10 +36,14 @@
 				<form action="{{ Route::has('urls.destroy') ? route('urls.destroy', ['id' => $url->id]) : '#' }}" method="POST" onsubmit="return confirm('Do you really want to delete the url?');" class="form-inline pull-right">
 					{{ method_field('DELETE') }}
 					{{ csrf_field() }}
-					<button type="submit" class="btn btn-md btn-dagner">
+					<button type="submit" class="btn btn-lg btn-danger">
 						<i class="fa fa-trash" aria-hidden="true"></i>
 					</button>
 				</form>
+
+                <a href="{{ Route::has('urls.redirect') ? route('urls.redirect', ['id' => $url->id]) : '#' }}" target="_blank" class="btn btn-lg btn-primary pull-right">
+                    <i class="fa fa-external-link" aria-hidden="true"></i>
+                </a>
             </td>
         </tr>
     @endforeach
@@ -49,4 +53,17 @@
 @if( method_exists($urls, 'links') )
     {{ $urls->links() }}
 @endif
+@append
+
+@section('styles')
+<link href="{{ asset('components/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+
+<style type="text/css">
+    .table :last-child > a {
+        margin-left: 8px;
+    }
+    .table :last-child > form {
+        margin-left: 8px;
+    }
+</style>
 @append

@@ -38,3 +38,8 @@ Route::group(['middleware' => 'auth'], function () {
 	});
 
 });
+
+/**
+* Redirect url, available for everyone
+*/
+Route::get('/{id}', 'UrlsController@redirect')->name('urls.redirect');
