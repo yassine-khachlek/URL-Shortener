@@ -21,6 +21,13 @@ Route::get('/home', 'HomeController@index');
 
 Route::group(['middleware' => 'auth'], function () {
 
+	Route::group(['prefix' => 'users', 'as' => 'users.'], function () {
+
+		Route::get('/{id}/edit', 'UsersController@edit')->name('edit');
+		Route::patch('/{id}', 'UsersController@update')->name('update');
+
+	});
+
 	Route::group(['prefix' => 'urls', 'as' => 'urls.'], function () {
 
 		Route::get('/', 'UrlsController@index')->name('index');

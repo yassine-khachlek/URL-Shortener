@@ -70,6 +70,10 @@
 
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
+                                        <a href="{{ Route::has('users.edit') ? route('users.edit', ['id' => Auth::user()->id]) : '#' }}">
+                                            Your profile
+                                        </a>
+
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -88,7 +92,12 @@
             </div>
         </nav>
 
-        @yield('content')
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                @yield('content')
+            </div>
+        </div>
     </div>
 
     <!-- Scripts -->
