@@ -45,9 +45,15 @@
                     </button>
 
                     <!-- Branding Image -->
+                    @if (Auth::guest())
                     <a class="navbar-brand" href="{{ url('/') }}">
                         {{ config('app.name', 'Laravel') }}
                     </a>
+                    @else
+                    <a class="navbar-brand" href="{{ Route::has('home') ? route('home') : '#' }}">
+                        {{ config('app.name', 'Laravel') }}
+                    </a>
+                    @endif
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
