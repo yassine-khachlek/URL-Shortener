@@ -22,3 +22,13 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+$factory->define(App\Url::class, function (Faker\Generator $faker) {
+    static $user_id;
+    static $url;
+
+    return [
+        'user_id' => $user_id ?: App\User::inRandomOrder()->first()->id,
+        'url' => $faker->url,
+    ];
+});
