@@ -19,6 +19,12 @@
             'csrfToken' => csrf_token(),
         ]) !!};
     </script>
+
+    <style type="text/css">
+        body {
+            overflow-y: scroll;
+        }
+    </style>
 </head>
 <body>
     <div id="app">

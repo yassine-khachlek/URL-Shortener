@@ -16,5 +16,10 @@ class UsersTableSeeder extends Seeder
 	    	'email' => 'yassine.khachlek@gmail.com',
 	    	'password' => bcrypt('secret')
 	    ]);
+
+        // Fake users
+        factory(App\User::class, 3)->create([
+            
+        ]);
     }
 }

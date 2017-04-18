@@ -11,8 +11,10 @@ class UrlsTableSeeder extends Seeder
      */
     public function run()
     {
-	    factory(App\Url::class, random_int(100, 200))->create([
-	    	
-	    ]);
+        foreach (App\User::get() as $user) {
+            factory(App\Url::class, random_int(7, 47))->create([
+                'user_id' => $user->id
+            ]);
+        }
     }
 }

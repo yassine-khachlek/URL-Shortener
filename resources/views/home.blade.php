@@ -8,7 +8,34 @@
                 <div class="panel-heading">Dashboard</div>
 
                 <div class="panel-body">
-                    You are logged in!
+
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <th>
+                                ID
+                            </th>
+                            <th>
+                                URL
+                            </th>
+                        </thead>
+                        <tbody>
+                        @foreach($urls as $url)
+                            <tr>
+                                <th>
+                                    {{ $url->id }}
+                                </th>
+                                <th>
+                                    {{ $url->url }}
+                                </th>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+
+                    @if( method_exists($urls, 'links') )
+                        {{ $urls->links() }}
+                    @endif
+
                 </div>
             </div>
         </div>
