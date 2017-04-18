@@ -24,11 +24,13 @@ $factory->define(App\Country::class, function (Faker\Generator $faker) {
 
 $factory->define(App\User::class, function (Faker\Generator $faker) {
     static $password;
+    static $is_admin;
 
     return [
         'name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
         'password' => $password ?: $password = bcrypt('secret'),
+        'is_admin' => $is_admin,
         'remember_token' => str_random(10),
     ];
 });
