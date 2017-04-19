@@ -36,18 +36,23 @@ class UrlAccessLog
             * TODO: find country by ip
             */
             $geo_lite = GeoLite::where('start', '>=', $request->ip())->where('end', '<=', $request->ip())->first();
+
             $url_access_log->country_code = $geo_lite ? $geo_lite->country_code : null;
 
             $url_access_log->user()->associate(Auth::user());
             
-            $url_access_log->url()->associate($url);
+            //$url_access_log->url()->associate($url);
 
-            $url_access_log->userAgent()->associate(
-                UserAgent::firstOrCreate(
+            $user_agent = UserAgent::firstOrCreate(
                     ['user_agent' => $request->header('User-Agent')], 
                     ['user_agent' => $request->header('User-Agent')]
-                )
-            );
+                );
+
+            $url_access_log->userAgent()->associate($user_agent);
+
+            $url_access_log->url_id    = $url->id;
+            $url_access_log->url       = $url->url;
+            $url_access_log->url_short = $url->url_short;
 
             $url_access_log->save();
 

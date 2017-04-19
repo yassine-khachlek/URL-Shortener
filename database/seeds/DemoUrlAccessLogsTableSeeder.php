@@ -16,7 +16,7 @@ class DemoUrlAccessLogsTableSeeder extends Seeder
             
         ])->each(function ($log) {
             
-            $log->url->increment('views_count');
+            $log->url()->increment('views_count');
 
         });
     }

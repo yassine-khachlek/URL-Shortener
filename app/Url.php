@@ -3,11 +3,9 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Url extends Model
 {
-    use SoftDeletes;
 
     protected $appends = ['url_short'];
 
@@ -30,14 +28,6 @@ class Url extends Model
     public function url()
     {
         return $this->belongsTo('App\Url', 'url_id', 'id');
-    }
-
-    /**
-     * Get the user that owns the url.
-     */
-    public function accessLogs()
-    {
-        return $this->hasMany('App\UrlAccessLog', 'url_id', 'id');
     }
 
     /*

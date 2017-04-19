@@ -19,7 +19,7 @@
         	URL
         </th>
         <th>
-        	USER NAME
+        	USER
         </th>
         <th>
         	USER AGENT
@@ -40,19 +40,13 @@
             	@endif
             </td>
             <td>
-                @if($url_access_log->url)
-                    {{ $url_access_log->url->url_short }}
-                @endif
+                {{ $url_access_log->url_short }}
             </td>
             <td>
-            	@if($url_access_log->url)
-            		{{ $url_access_log->url->url }}
-            	@endif
+                {{ $url_access_log->url }}
             </td>
             <td>
-            	@if($url_access_log->user)
-                	{{ $url_access_log->user->name }}
-                @endif
+            	{{$url_access_log->user->email}}
             </td>
             <td>
             	@if($url_access_log->userAgent)

@@ -15,11 +15,4 @@ class UserAgent extends Model
         'user_agent',
     ];
 
-    /**
-     * Get the user that owns the url.
-     */
-    public function accessLog()
-    {
-        return $this->hasMany('App\UrlAccessLog', 'id', 'user_agent_id');
-    }
 }

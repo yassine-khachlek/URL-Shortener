@@ -54,15 +54,19 @@ $factory->define(App\UserAgent::class, function (Faker\Generator $faker) {
 });
 
 $factory->define(App\UrlAccessLog::class, function (Faker\Generator $faker) {
-    static $user_id;
-    static $url_id;
+    static $user_email;
+    static $url;
     static $user_agent_id;
     static $country_code;
     static $ip;
 
+    $url = $url ?: App\Url::inRandomOrder()->first();
+
     return [
-        'user_id' => $user_id ?: App\User::inRandomOrder()->first()->id,
-        'url_id' => $url_id ?: App\Url::inRandomOrder()->first()->id,
+        'user_email' => $user_email ?: App\User::inRandomOrder()->first()->email,
+        'url_id' => $url->id,
+        'url' => $url->url,
+        'url_short' => $url->url_short,
         'user_agent_id' => $user_agent_id ?: App\UserAgent::inRandomOrder()->first()->id,
         'country_code' => $country_code ?:  App\Country::inRandomOrder()->first()->code,
         'ip' => $ip ?: $faker->ipv4,
