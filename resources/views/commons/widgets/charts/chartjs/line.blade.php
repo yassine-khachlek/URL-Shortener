@@ -37,13 +37,20 @@
             data: {{ camel_case($id) }}ChartData,
             options: {
                 scales: {
-                  xAxes: [{
-                    ticks: {
-                      autoSkip: false,
-                      maxRotation: 90,
-                      minRotation: 90
-                    }
-                  }]
+                    xAxes: [{
+                        ticks: {
+                            autoSkip: false,
+                            maxRotation: 90,
+                            minRotation: 90
+                        }
+                    }],
+                    yAxes: [{
+                        display: true,
+                        ticks: {
+                            suggestedMin: 0,
+                            beginAtZero: true
+                        }
+                    }]
                 }
             }
         });

@@ -12,7 +12,7 @@ class DemoUrlsTableSeeder extends Seeder
     public function run()
     {
         foreach (App\User::get() as $user) {
-            factory(App\Url::class, random_int(7, 47))->create([
+            factory(App\Url::class, random_int(0, Config::get('url.limit_per_user')))->create([
                 'user_id' => $user->id
             ]);
         }

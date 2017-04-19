@@ -111,6 +111,8 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
+                @include('commons.widgets.errors')
+            
                 @yield('content')
             </div>
         </div>

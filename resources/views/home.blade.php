@@ -50,8 +50,8 @@
         @include('commons.widgets.charts.chartjs.pie', [
             'id'    =>  'url_limit',
             'labels'=>  collect([
-                                        'Urls used',
-                                        'Remaining urls',
+                                        'Urls used '.App\Url::count().'/'.Config::get('url.limit_per_app'),
+                                        Config::get('url.limit_per_app') - App\Url::count().' Remaining urls',
                                     ]),
             'data'  =>  collect([
                                         App\Url::count(),

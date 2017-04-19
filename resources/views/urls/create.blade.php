@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
 <form action="{{ Route::has('urls.store') ? route('urls.store') : '#' }}" method="POST">
 	{{ method_field('POST') }}
 	{{ csrf_field() }}

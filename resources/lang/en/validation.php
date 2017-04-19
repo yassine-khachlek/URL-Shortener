@@ -101,6 +101,12 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
+        'limit_per_user' => [
+            'max' => 'Your urls limit has been reached.',
+        ],
+        'limit_per_app' => [
+            'max' => 'The application urls limit has been reached.',
+        ],
     ],
 
     /*

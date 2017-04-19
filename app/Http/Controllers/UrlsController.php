@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Url;
 use Validator;
+use Config;
 
 class UrlsController extends Controller
 {
@@ -39,9 +40,22 @@ class UrlsController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(), [
+        $data = $request->all();
+        $data['limit_per_user'] = Auth::user()->urls()->count();
+        $data['limit_per_app'] = Url::count();
+
+        $validator = Validator::make($data, [
             'url' => 'required|url',
+            'limit_per_user' => 'numeric|max:'.(config::get('url.limit_per_user')-1),
+            'limit_per_app' => 'numeric|max:'.(config::get('url.limit_per_app')-1),
         ]);
+
+        $validator->message = function(){
+            return [
+                'limit_per_user' => 'A title is required',
+                'limit_per_app'  => 'A message is required',
+            ];
+        };
 
         if ($validator->fails()) {
 

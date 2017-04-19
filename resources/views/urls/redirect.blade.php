@@ -5,10 +5,10 @@
 </head>
 <body>
 	<div id="info">
-		Redirect after 5 seconds...
+		Redirect after 3 seconds...
 	</div>
 	<script type="text/javascript">
-		var redirectAfter = 5;
+		var redirectAfter = 3;
 
 		var interval = setInterval(function(){
 			redirectAfter--;
