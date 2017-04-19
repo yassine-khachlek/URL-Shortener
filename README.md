@@ -1,6 +1,6 @@
 # URL Shortener
 
-![alt tag](https://styleci.io/analyses/8A36ey#)
+![alt tag](https://styleci.io/repos/88567656/shield?branch=master)
 
 # Install
 
