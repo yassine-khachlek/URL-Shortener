@@ -12,7 +12,7 @@ class DemoUsersTableSeeder extends Seeder
     public function run()
     {
         factory(App\User::class, 3)->create([
-            'password' => 'demo',
+            'password' => bcrypt('demo'),
             'is_admin' => false,
         ]);
     }
