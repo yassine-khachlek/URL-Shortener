@@ -1,5 +1,7 @@
 # URL Shortener
 
+![alt tag](https://styleci.io/analyses/8A36ey#)
+
 # Install
 
 Migrate the database:
