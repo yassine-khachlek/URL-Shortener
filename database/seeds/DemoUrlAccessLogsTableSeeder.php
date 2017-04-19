@@ -13,11 +13,9 @@ class DemoUrlAccessLogsTableSeeder extends Seeder
     {
         // Fake user agent
         factory(App\UrlAccessLog::class, random_int(64, 256))->create([
-            
-        ])->each(function ($log) {
-            
-            $log->url()->increment('views_count');
 
+        ])->each(function ($log) {
+            $log->url()->increment('views_count');
         });
     }
 }

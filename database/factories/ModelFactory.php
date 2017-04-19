@@ -68,7 +68,7 @@ $factory->define(App\UrlAccessLog::class, function (Faker\Generator $faker) {
         'url' => $url->url,
         'url_short' => $url->url_short,
         'user_agent_id' => $user_agent_id ?: App\UserAgent::inRandomOrder()->first()->id,
-        'country_code' => $country_code ?:  App\Country::inRandomOrder()->first()->code,
+        'country_code' => $country_code ?: App\Country::inRandomOrder()->first()->code,
         'ip' => $ip ?: $faker->ipv4,
     ];
 });

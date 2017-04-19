@@ -2,11 +2,8 @@
 
 namespace App\Console\Commands;
 
-use Illuminate\Console\Command;
-
 use App\Url;
-use App\UrlAccessLog;
-use Storage;
+use Illuminate\Console\Command;
 
 class UrlClear extends Command
 {
@@ -44,9 +41,9 @@ class UrlClear extends Command
         $urls = Url::where('created_at', '<', date('Y-m-d H:i:s', strtotime('-1 day')));
 
         if ($urls->count()) {
-            $this->info($urls->count(). ' urls deleted.');
+            $this->info($urls->count().' urls deleted.');
             $urls->delete();
-        }else{
+        } else {
             $this->line('No urls to clear.');
         }
     }

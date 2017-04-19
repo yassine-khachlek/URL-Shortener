@@ -2,13 +2,13 @@
 
 return [
 
-    'en' => [ 
+    'en' => [
         'english_name' => 'English',
         'native_name' => 'English',
         'flag' => 'gb',
         'prefix' => '',
         'as' => '',
-    ], 
+    ],
 
     'fr' => [
         'english_name' => 'French',
@@ -16,5 +16,5 @@ return [
         'flag' => 'fr',
         'prefix' => '/fr',
         'as' => 'fr.',
-    ]
+    ],
 ];
