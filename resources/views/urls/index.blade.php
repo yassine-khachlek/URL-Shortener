@@ -1,15 +1,36 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="row">
-    <div class="col-md-12">
-        <div class="form-group">
-            <a href="{{ Route::has('urls.create') ? route('urls.create') : '#' }}" class="btn btn-lg btn-success btn-block">
-                <i class="fa fa-plus" aria-hidden="true"></i>
-            </a>
-        </div>
+
+@if( Auth::user()->urls()->count() >= Config::get('url.limit_per_user') )
+
+    <div class="alert alert-danger" role="alert">
+        Sorry you have reached your urls limit ({{Config::get('url.limit_per_user')}}).
     </div>
-</div>
+
+@else
+
+    @if( App\Url::count() >= Config::get('url.limit_per_app') )
+
+        <div class="alert alert-danger" role="alert">
+            Sorry the application has reached its limit of urls ({{Config::get('url.limit_per_app')}}).
+        </div>
+
+    @else
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <a href="{{ Route::has('urls.create') ? route('urls.create') : '#' }}" class="btn btn-lg btn-success btn-block">
+                        <i class="fa fa-plus" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    @endif
+
+@endif
 
 <table class="table table-striped table-hover">
     <thead>

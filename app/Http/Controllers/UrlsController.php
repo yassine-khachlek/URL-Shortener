@@ -17,7 +17,7 @@ class UrlsController extends Controller
      */
     public function index()
     {
-        $urls = Url::orderBy('id', 'desc')->paginate(15);
+        $urls = Auth::user()->urls()->orderBy('id', 'desc')->paginate(15);
 
         return view('urls.index', compact('urls'));
     }
