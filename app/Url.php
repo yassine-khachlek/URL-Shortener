@@ -39,4 +39,14 @@ class Url extends Model
     {
         return $this->hasMany('App\UrlAccessLog', 'url_id', 'id');
     }
+
+    /*
+    protected static function boot() {
+        parent::boot();
+
+        static::deleting(function($url) {
+            $url->accessLogs()->delete();
+        });
+    }
+    */
 }

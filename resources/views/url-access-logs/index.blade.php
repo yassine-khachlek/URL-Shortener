@@ -13,10 +13,13 @@
         	COUNTRY
         </th>
         <th>
+            URL SHORT
+        </th>
+        <th>
         	URL
         </th>
         <th>
-        	USERNAME
+        	USER NAME
         </th>
         <th>
         	USER AGENT
@@ -35,6 +38,11 @@
             	@if($url_access_log->country)
             		<span class="flag-icon flag-icon-{{ $url_access_log->country->code }}"></span>
             	@endif
+            </td>
+            <td>
+                @if($url_access_log->url)
+                    {{ $url_access_log->url->url_short }}
+                @endif
             </td>
             <td>
             	@if($url_access_log->url)

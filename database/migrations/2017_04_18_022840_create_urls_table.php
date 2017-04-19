@@ -21,7 +21,6 @@ class CreateUrlsTable extends Migration
             $table->timestamps();
             $table->softDeletes();
 
-
             $table->foreign('user_id')->references('id')->on((new App\User)->getTable());
         });
 

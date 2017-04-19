@@ -74,12 +74,12 @@ class UrlsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int  $hexId
      * @return \Illuminate\Http\Response
      */
     public function redirect(Request $request, $id)
     {
-        $url = Url::findOrFail($id);
+        $url = Url::findOrFail(hexdec($id));
         return view('urls.redirect', compact('url'));
     }
 

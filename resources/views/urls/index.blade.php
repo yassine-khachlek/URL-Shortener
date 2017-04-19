@@ -53,7 +53,7 @@
 					</button>
 				</form>
 
-                <a href="{{ Route::has('urls.redirect') ? route('urls.redirect', ['id' => $url->id]) : '#' }}" target="_blank" class="btn btn-lg btn-primary pull-right">
+                <a href="{{ $url->url_short }}" target="_blank" class="btn btn-lg btn-primary pull-right">
                     <i class="fa fa-external-link" aria-hidden="true"></i>
                 </a>
             </td>

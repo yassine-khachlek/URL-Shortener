@@ -5,6 +5,8 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 
 use App\Url;
+use App\UrlAccessLog;
+use Storage;
 
 class UrlClear extends Command
 {
@@ -20,7 +22,7 @@ class UrlClear extends Command
      *
      * @var string
      */
-    protected $description = 'Remove links older than 24 hours';
+    protected $description = 'Remove links older than 24 hours, this comman should run every hour.';
 
     /**
      * Create a new command instance.
@@ -39,23 +41,45 @@ class UrlClear extends Command
      */
     public function handle()
     {
-        Url::chunk(1000, function ($urls) {
-            
-            Url::destroy($urls->map(function($url){
-                return $url->id;
-            })->toArray());
+        // Get the current hour
+        $currentHour = date('Y-m-d H:00:00');
 
-        });
+        // Set the log path
+        $logPath = join('', [
+            'logs/',
+            date('Y/m/d/H', strtotime($currentHour)),
+            '.json'
+        ]);
 
-        /*
-        foreach ($urls as $url) {
-           
+        // Get urls access log where urls been created in the previous hour
+        $UrlAccessLogs = UrlAccessLog::with(['user', 'url', 'userAgent', 'country'])
+        ->whereHas('url', function($query) use ($currentHour) {
+            $query->where('created_at', '<', $currentHour);
+        })
+        ->orderBy('created_at', 'asc')
+        ->get();
 
-            foreach ($url->accessLogs()->get() as $access_log) {
-                $access_log->url()->dissociate()->save();
-                $this->info($access_log);
-            }
+        if ( $UrlAccessLogs->count() ) {
+
+            $this->info($UrlAccessLogs->count(). ' logs archived.');
+
+            // Store urls access log in the local storage
+            // TODO: Remove json_encode with JSON_PRETTY_PRINT in prod
+            Storage::disk('local')->put($logPath, json_encode($UrlAccessLogs, JSON_PRETTY_PRINT));
+
+        }else{
+            $this->line('No logs to clear.');
         }
-        */
+
+        // Remove old urls, accessLogs will be deleted in cascade.
+        $urls = Url::where('created_at', '<', $currentHour)->withTrashed();
+
+        if ($urls->count()) {
+            $this->info($urls->count(). ' urls deleted.');
+            $urls->forceDelete();
+        }else{
+            $this->line('No urls to clear.');   
+        }
+
     }
 }

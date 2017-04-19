@@ -19,7 +19,7 @@ class UrlAccessLog extends Model
      */
     public function url()
     {
-        return $this->belongsTo('App\Url', 'url_id', 'id');
+        return $this->belongsTo('App\Url', 'url_id', 'id')->withTrashed();
     }
 
     /**
