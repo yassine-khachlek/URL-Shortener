@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Url extends Model
 {
-
     protected $appends = ['url_short'];
 
     public function getUrlShortAttribute()

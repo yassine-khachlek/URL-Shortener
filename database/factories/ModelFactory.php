@@ -27,10 +27,10 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
     static $is_admin;
 
     return [
-        'name' => $faker->name,
-        'email' => $faker->unique()->safeEmail,
-        'password' => $password ?: bcrypt('secret'),
-        'is_admin' => $is_admin,
+        'name'           => $faker->name,
+        'email'          => $faker->unique()->safeEmail,
+        'password'       => $password ?: bcrypt('secret'),
+        'is_admin'       => $is_admin,
         'remember_token' => str_random(10),
     ];
 });
@@ -41,7 +41,7 @@ $factory->define(App\Url::class, function (Faker\Generator $faker) {
 
     return [
         'user_id' => $user_id ?: App\User::inRandomOrder()->first()->id,
-        'url' => $faker->url,
+        'url'     => $faker->url,
     ];
 });
 
@@ -63,12 +63,12 @@ $factory->define(App\UrlAccessLog::class, function (Faker\Generator $faker) {
     $url = $url ?: App\Url::inRandomOrder()->first();
 
     return [
-        'user_email' => $user_email ?: App\User::inRandomOrder()->first()->email,
-        'url_id' => $url->id,
-        'url' => $url->url,
-        'url_short' => $url->url_short,
+        'user_email'    => $user_email ?: App\User::inRandomOrder()->first()->email,
+        'url_id'        => $url->id,
+        'url'           => $url->url,
+        'url_short'     => $url->url_short,
         'user_agent_id' => $user_agent_id ?: App\UserAgent::inRandomOrder()->first()->id,
-        'country_code' => $country_code ?:  App\Country::inRandomOrder()->first()->code,
-        'ip' => $ip ?: $faker->ipv4,
+        'country_code'  => $country_code ?: App\Country::inRandomOrder()->first()->code,
+        'ip'            => $ip ?: $faker->ipv4,
     ];
 });

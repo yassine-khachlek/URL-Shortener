@@ -2,8 +2,8 @@
 
 namespace App\Policies;
 
-use App\User;
 use App\Url;
+use App\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class UrlPolicy
@@ -13,7 +13,8 @@ class UrlPolicy
     /**
      * Determine whether the user can create urls.
      *
-     * @param  \App\User  $user
+     * @param \App\User $user
+     *
      * @return mixed
      */
     public function create(User $user)
@@ -24,7 +25,8 @@ class UrlPolicy
     /**
      * Determine whether the user can create urls.
      *
-     * @param  \App\User  $user
+     * @param \App\User $user
+     *
      * @return mixed
      */
     public function store(User $user)
@@ -35,8 +37,9 @@ class UrlPolicy
     /**
      * Determine whether the user can delete the url.
      *
-     * @param  \App\User  $user
-     * @param  \App\Url  $url
+     * @param \App\User $user
+     * @param \App\Url  $url
+     *
      * @return mixed
      */
     public function delete(User $user, Url $url)

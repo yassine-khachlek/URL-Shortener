@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Url;
+use Config;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Url;
 use Validator;
-use Config;
 
 class UrlsController extends Controller
 {
@@ -37,7 +37,8 @@ class UrlsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -49,12 +50,12 @@ class UrlsController extends Controller
         $data['limit_per_app'] = Url::count();
 
         $validator = Validator::make($data, [
-            'url' => 'required|url',
-            'limit_per_user' => 'numeric|max:'.(config::get('url.limit_per_user')-1),
-            'limit_per_app' => 'numeric|max:'.(config::get('url.limit_per_app')-1),
+            'url'            => 'required|url',
+            'limit_per_user' => 'numeric|max:'.(config::get('url.limit_per_user') - 1),
+            'limit_per_app'  => 'numeric|max:'.(config::get('url.limit_per_app') - 1),
         ]);
 
-        $validator->message = function(){
+        $validator->message = function () {
             return [
                 'limit_per_user' => 'A title is required',
                 'limit_per_app'  => 'A message is required',
@@ -62,17 +63,15 @@ class UrlsController extends Controller
         };
 
         if ($validator->fails()) {
-
             return redirect()->back()
                 ->withErrors($validator)
                 ->withInput();
-
         }
 
-        $url = new Url;
+        $url = new Url();
         $url->user_id = Auth::user()->id;
         $url->url = $request->get('url');
-        
+
         $url->save();
 
         return redirect(route('urls.index'));
@@ -81,7 +80,8 @@ class UrlsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $hexId
+     * @param int $hexId
+     *
      * @return \Illuminate\Http\Response
      */
     public function redirect(Request $request, $id)
@@ -94,7 +94,8 @@ class UrlsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

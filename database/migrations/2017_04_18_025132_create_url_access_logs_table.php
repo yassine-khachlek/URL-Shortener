@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateUrlAccessLogsTable extends Migration
 {
@@ -13,7 +13,7 @@ class CreateUrlAccessLogsTable extends Migration
      */
     public function up()
     {
-        Schema::create((new App\UrlAccessLog)->getTable(), function (Blueprint $table) {
+        Schema::create((new App\UrlAccessLog())->getTable(), function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('user_email')->nullable();
             $table->string('ip', 45);
@@ -25,8 +25,8 @@ class CreateUrlAccessLogsTable extends Migration
 
             $table->timestamps();
 
-            $table->foreign('user_agent_id')->references('id')->on((new App\UserAgent)->getTable());
-            $table->foreign('country_code')->references('code')->on((new App\Country)->getTable());
+            $table->foreign('user_agent_id')->references('id')->on((new App\UserAgent())->getTable());
+            $table->foreign('country_code')->references('code')->on((new App\Country())->getTable());
         });
     }
 
@@ -37,6 +37,6 @@ class CreateUrlAccessLogsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists((new App\UrlAccessLog)->getTable());
+        Schema::dropIfExists((new App\UrlAccessLog())->getTable());
     }
 }

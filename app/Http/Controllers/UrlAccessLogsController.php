@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
 use App\UrlAccessLog;
 
 class UrlAccessLogsController extends Controller

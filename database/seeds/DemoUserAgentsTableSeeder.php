@@ -13,7 +13,7 @@ class DemoUserAgentsTableSeeder extends Seeder
     {
         // Fake user agent
         factory(App\UserAgent::class, random_int(32, 128))->create([
-            
+
         ]);
     }
 }

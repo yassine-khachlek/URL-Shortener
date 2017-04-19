@@ -30,7 +30,6 @@ class UrlAccessLog extends Model
         return $this->belongsTo('App\Url', 'url_id', 'id');
     }
 
-
     /**
      * Get the country that owns the log.
      */

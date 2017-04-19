@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateUserAgentsTable extends Migration
 {
@@ -13,7 +13,7 @@ class CreateUserAgentsTable extends Migration
      */
     public function up()
     {
-        Schema::create((new App\UserAgent)->getTable(), function (Blueprint $table) {
+        Schema::create((new App\UserAgent())->getTable(), function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->text('user_agent');
             $table->timestamps();
@@ -27,6 +27,6 @@ class CreateUserAgentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists((new App\UserAgent)->getTable());
+        Schema::dropIfExists((new App\UserAgent())->getTable());
     }
 }
