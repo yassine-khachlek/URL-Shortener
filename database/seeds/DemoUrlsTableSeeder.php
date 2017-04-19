@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class UrlsTableSeeder extends Seeder
+class DemoUrlsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.

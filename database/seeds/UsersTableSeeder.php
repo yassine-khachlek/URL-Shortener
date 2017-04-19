@@ -14,13 +14,8 @@ class UsersTableSeeder extends Seeder
 	    factory(App\User::class, 1)->create([
 	    	'name' => 'Yassine Khachlek',
 	    	'email' => 'yassine.khachlek@gmail.com',
-	    	'password' => bcrypt('secret'),
+	    	'password' => 'secret',
             'is_admin' => true,
 	    ]);
-
-        // Fake users
-        factory(App\User::class, 3)->create([
-            'is_admin' => false,
-        ]);
     }
 }
