@@ -47,7 +47,7 @@
     </div>
 </div>
 
-@if(Auth::user()->is_admin)
+@if (Auth::user()->can('index', App\UrlAccessLog::class))
     <div class="row">
         <div class="col-md-12">
             <div class="form-group">
