@@ -11,7 +11,7 @@ class DemoSeeder extends Seeder
      */
     public function run()
     {
-    	$this->call(DemoUsersTableSeeder::class);
+        $this->call(DemoUsersTableSeeder::class);
         $this->call(DemoUrlsTableSeeder::class);
         $this->call(DemoUserAgentsTableSeeder::class);
         $this->call(DemoUrlAccessLogsTableSeeder::class);

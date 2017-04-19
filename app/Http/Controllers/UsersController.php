@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Validation\Rule; 
 use App\User;
+use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use Validator;
 
 class UsersController extends Controller

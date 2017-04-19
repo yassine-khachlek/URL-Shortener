@@ -1,8 +1,7 @@
 <?php
 
-use Illuminate\Database\Seeder;
-
 use App\Country;
+use Illuminate\Database\Seeder;
 
 class CountriesTableSeeder extends Seeder
 {
@@ -14,22 +13,21 @@ class CountriesTableSeeder extends Seeder
     public function run()
     {
         $header = [];
-        $rows   = [];
-        $count  = -1;
-        
-        if (($handle = fopen(base_path('database/seeds/data/countries.csv'), 'r')) !== FALSE) {
-            while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+        $rows = [];
+        $count = -1;
+
+        if (($handle = fopen(base_path('database/seeds/data/countries.csv'), 'r')) !== false) {
+            while (($data = fgetcsv($handle, 1000, ',')) !== false) {
                 $num = count($data);
                 $count++;
-                if( $count < 1 )
-                {
-                    for ($c=0; $c < $num; $c++) {
+                if ($count < 1) {
+                    for ($c = 0; $c < $num; $c++) {
                         $header[$c] = $data[$c];
                     }
-                }else{
+                } else {
                     $rows[$count] = [];
-                    for ($c=0; $c < $num; $c++) {
-                        if ($data[$c]==='null') {
+                    for ($c = 0; $c < $num; $c++) {
+                        if ($data[$c] === 'null') {
                             $data[$c] = null;
                         }
                         $rows[$count][$header[$c]] = $data[$c];
@@ -41,8 +39,8 @@ class CountriesTableSeeder extends Seeder
 
         foreach ($rows as $row) {
             Country::firstOrCreate(['code' => strtolower($row['code'])], [
-            	'code' => strtolower($row['code']),
-            	'name' => $row['name'],
+                'code' => strtolower($row['code']),
+                'name' => $row['name'],
             ]);
         }
     }

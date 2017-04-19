@@ -44,7 +44,7 @@ class Kernel extends HttpKernel
 
         'url.access.log' => [
             \App\Http\Middleware\UrlAccessLog::class,
-        ]
+        ],
     ];
 
     /**
