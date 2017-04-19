@@ -17,7 +17,7 @@ class UrlsController extends Controller
      */
     public function index()
     {
-        $urls = Auth::user()->urls()->orderBy('id', 'desc')->paginate(15);
+        $urls = Url::orderBy('id', 'desc')->paginate(15);
 
         return view('urls.index', compact('urls'));
     }
@@ -29,6 +29,8 @@ class UrlsController extends Controller
      */
     public function create()
     {
+        $this->authorize('create', Url::class);
+
         return view('urls.create');
     }
 
@@ -40,6 +42,8 @@ class UrlsController extends Controller
      */
     public function store(Request $request)
     {
+        $this->authorize('store', Url::class);
+
         $data = $request->all();
         $data['limit_per_user'] = Auth::user()->urls()->count();
         $data['limit_per_app'] = Url::count();
@@ -77,47 +81,14 @@ class UrlsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
      * @param  int  $hexId
      * @return \Illuminate\Http\Response
      */
     public function redirect(Request $request, $id)
     {
         $url = Url::findOrFail(hexdec($id));
+
         return view('urls.redirect', compact('url'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
     }
 
     /**
@@ -128,7 +99,11 @@ class UrlsController extends Controller
      */
     public function destroy($id)
     {
-        Url::findOrfail($id)->delete();
+        $url = Url::findOrfail($id);
+
+        $this->authorize('delete', $url);
+
+        $url->delete();
 
         return redirect(route('urls.index'));
     }
