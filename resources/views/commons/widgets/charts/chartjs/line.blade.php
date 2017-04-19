@@ -1,7 +1,6 @@
 <canvas id="{{ camel_case($id) }}" width="400" height="150"></canvas>
 
 @section('scripts')
-<script src="{{ asset('components/chart.js/dist/Chart.min.js') }}"></script>
 <script type="text/javascript">
 	$( document ).ready(function() {
 
@@ -35,7 +34,7 @@
 
         var {{ camel_case($id) }}ChartChart = new Chart(document.getElementById("{{ camel_case($id) }}"), {
             type: 'line',
-            data: urlViewsChartData,
+            data: {{ camel_case($id) }}ChartData,
             options: {
                 scales: {
                   xAxes: [{

@@ -46,7 +46,35 @@
             </a>
         </div>
     </div>
+    <div class="col-lg-3 col-md-12">
+        @include('commons.widgets.charts.chartjs.pie', [
+            'id'    =>  'url_limit',
+            'labels'=>  collect([
+                                        'Urls used',
+                                        'Remaining urls',
+                                    ]),
+            'data'  =>  collect([
+                                        App\Url::count(),
+                                        Config::get('url.limit_per_app') - App\Url::count(),
+                                    ]),
+        ])
+    </div>
+
+    <div class="col-lg-9 col-md-12">
+        @include('commons.widgets.charts.chartjs.line', [
+            'id'    =>  'url_views',
+            'label' =>  'URL views',
+            'labels'=>  $url->map(function($item){
+                            return $item->url;
+                        }),
+            'data'  =>  $url->map(function($item){
+                            return $item->views_count;
+                        }),
+        ])
+    </div>
 </div>
+
+<br>
 
 <div class="row">
     <div class="col-md-12">
@@ -58,21 +86,8 @@
         </div>
     </div>
 </div>
+@append
 
-<div class="row">
-    
-    <div class="col-lg-12 col-md-12">
-        @include('commons.widgets.charts.chartjs.line', [
-            'id'    =>  'url_views',
-            'label' =>  'URL views',
-            'labels'=>  $url->map(function($item){
-                            return $item->url;
-                        }),
-            'data'  => $url->map(function($item){
-                            return $item->views_count;
-                        }),
-        ])
-    </div>
-
-</div>
+@section('scripts')
+<script src="{{ asset('components/chart.js/dist/Chart.min.js') }}"></script>
 @append

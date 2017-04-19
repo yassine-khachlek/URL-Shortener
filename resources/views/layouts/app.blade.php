@@ -121,7 +121,7 @@
     <script src="{{ asset('js/app.js') }}"></script>
     --}}
 
-    <script src="{{ asset('components/jquery/dist/jquery.min.js') }}"></script>
+    <script src="{{ asset('components/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
 
     @yield('scripts')
