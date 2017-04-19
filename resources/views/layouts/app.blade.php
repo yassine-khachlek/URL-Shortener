@@ -23,6 +23,8 @@
 
     <link href="{{ asset('components/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
 
+    <link href="{{ asset('components/flag-icon-css/css/flag-icon.min.css') }}" rel="stylesheet">
+
     {{--
     <!-- Scripts -->
     <script>
@@ -72,12 +74,14 @@
                         &nbsp;
                     </ul>
 
+                    @include('commons.widgets.language-switcher')
+
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @if (Auth::guest())
-                            <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
+                            <li><a href="{{ Route::has('login') ? route('login') : '#' }}">Login</a></li>
+                            <li><a href="{{ Route::has('register') ? route('register') : '#' }}">Register</a></li>
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -90,13 +94,13 @@
                                             Your profile
                                         </a>
 
-                                        <a href="{{ route('logout') }}"
+                                        <a href="{{ Route::has('logout') ? route('logout') : '#' }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                             Logout
                                         </a>
 
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        <form id="logout-form" action="{{ Route::has('logout') ? route('logout') : '#' }}" method="POST" style="display: none;">
                                             {{ csrf_field() }}
                                         </form>
                                     </li>
@@ -104,6 +108,8 @@
                             </li>
                         @endif
                     </ul>
+
+
                 </div>
             </div>
         </nav>

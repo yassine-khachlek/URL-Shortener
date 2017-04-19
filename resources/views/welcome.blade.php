@@ -10,6 +10,9 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
+            <link href="{{ asset('components/flag-icon-css/css/flag-icon.min.css') }}" rel="stylesheet">
+
+
         <!-- Styles -->
         <style>
             html, body {
@@ -69,10 +72,10 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @if (Auth::check())
-                        <a href="{{ url('/home') }}">Home</a>
+                        <a href="{{ Route::has(Config::get('languages.'.App::getLocale().'.as').'home') ? route(Config::get('languages.'.App::getLocale().'.as').'home') : '#' }}">Home</a>
                     @else
-                        <a href="{{ url('/login') }}">Login</a>
-                        <a href="{{ url('/register') }}">Register</a>
+                        <a href="{{ Route::has(Config::get('languages.'.App::getLocale().'.as').'login') ? route(Config::get('languages.'.App::getLocale().'.as').'login') : '#' }}">Login</a>
+                        <a href="{{ Route::has(Config::get('languages.'.App::getLocale().'.as').'register') ? route(Config::get('languages.'.App::getLocale().'.as').'register') : '#' }}">Register</a>
                     @endif
                 </div>
             @endif
@@ -81,6 +84,25 @@
                 <div class="title m-b-md">
                     {{ Config::get('app.name') }}
                 </div>
+
+                <div class="links">
+                @foreach(
+                    Config::get('languages')
+                    as $key => $language
+                )
+
+                    <a href="{{ Route::has($language['as'].'welcome') ? route($language['as'].'welcome') : '#' }}">
+
+                            @if($language['flag'])
+                            <span class="flag-icon flag-icon-{{ $language['flag'] }}"></span>
+                            @endif
+
+                        {{ $language['native_name'] }}
+                    </a>
+
+                @endforeach
+                </div>
+
                 {{--
                 <div class="links">
                     <a href="https://laravel.com/docs">Documentation</a>

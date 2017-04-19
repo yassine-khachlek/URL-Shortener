@@ -46,7 +46,7 @@
                 {{ $url_access_log->url }}
             </td>
             <td>
-            	{{$url_access_log->user->email}}
+            	{{$url_access_log->user_email}}
             </td>
             <td>
             	@if($url_access_log->userAgent)
@@ -61,8 +61,4 @@
 @if( method_exists($url_access_logs, 'links') )
     {{ $url_access_logs->links() }}
 @endif
-@append
-
-@section('styles')
-<link href="{{ asset('components/flag-icon-css/css/flag-icon.min.css') }}" rel="stylesheet">
 @append
