@@ -15,8 +15,8 @@
 					Config::get('languages')
 			        as $key => $language
 			    )
-			    	@if($key !== App::getLocale())
-		                <a href="{{ Route::has($language['as'].'welcome') ? route($language['as'].'welcome') : '#' }}">
+			    	@if($key != App::getLocale())
+		                <a href="{{ localizedRoute($key) }}">
 							@if($language['flag'])
 							<span class="flag-icon flag-icon-{{ $language['flag'] }}"></span>
 							@endif
