@@ -2,7 +2,13 @@
 
 @section('content')
 
-<form action="{{ Route::has('urls.store') ? route('urls.store') : '#' }}" method="POST">
+<div class="progress">
+  <div class="progress-bar" role="progressbar" aria-valuenow="{{ Auth::user()->urls->count() }}" aria-valuemin="{{ Auth::user()->urls->count() }}" aria-valuemax="{{ Config::get('url.limit_per_user') }}" style="width: {{ Auth::user()->urls->count() / Config::get('url.limit_per_user') * 100 }}%;">
+    {{ Auth::user()->urls->count() }} / {{ Config::get('url.limit_per_user') }}
+  </div>
+</div>
+
+<form action="{{ Route::has(Config::get('languages.'.App::getLocale().'.as').'urls.store') ? route(Config::get('languages.'.App::getLocale().'.as').'urls.store') : '#' }}" method="POST">
 	{{ method_field('POST') }}
 	{{ csrf_field() }}
 
