@@ -44,7 +44,6 @@ foreach (Config::get('languages') as $language) {
                 Route::get('/', 'UrlAccessLogsController@index')->name('index');
                 Route::get('/datatables/data', 'UrlAccessLogsController@datatables')->name('datatables.data');
                 //Route::get('/datatables/getIndex', 'UrlAccessLogsController@index')->name('datatables');
-
             });
         });
     });

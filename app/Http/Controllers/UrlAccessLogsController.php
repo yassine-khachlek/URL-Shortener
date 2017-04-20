@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests;
 use App\UrlAccessLog;
 use Yajra\Datatables\Datatables;
 
@@ -30,7 +29,7 @@ class UrlAccessLogsController extends Controller
     public function datatables()
     {
         $this->authorize('datatables', UrlAccessLog::class);
-        
+
         $query = UrlAccessLog::with('country', 'userAgent');
 
         return Datatables::of($query)->make(true);
