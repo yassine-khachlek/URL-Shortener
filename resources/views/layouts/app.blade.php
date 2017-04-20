@@ -39,6 +39,7 @@
     <style type="text/css">
         body {
             overflow-y: scroll;
+            padding-bottom: 100px;
         }
     </style>
 </head>

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<table class="table table-striped table-hover">
+<table class="table table-striped table-hover" id="url-access-logs-table">
     <thead>
         <th>
             @lang('app.date_time')
@@ -35,9 +35,10 @@
             	{{ $url_access_log->ip }}
             </td>
             <td>
-            	@if($url_access_log->country)
-            		<span class="flag-icon flag-icon-{{ $url_access_log->country->code }}"></span>
-            	@endif
+                @if($url_access_log->country)
+                   <span class="flag-icon flag-icon-{{ $url_access_log->country->code }}"></span>
+                   {{$url_access_log->country->name}}
+                @endif
             </td>
             <td>
                 {{ $url_access_log->url_short }}
@@ -49,8 +50,8 @@
             	{{$url_access_log->user_email}}
             </td>
             <td>
-            	@if($url_access_log->userAgent)
-                	{{ $url_access_log->userAgent->user_agent }}
+                @if($url_access_log->userAgent)
+            	   {{$url_access_log->userAgent->user_agent}}
                 @endif
             </td>
         </tr>
@@ -58,7 +59,50 @@
     </tbody>
 </table>
 
+<noscript>
 @if( method_exists($url_access_logs, 'links') )
     {{ $url_access_logs->links() }}
 @endif
+</noscript>
+
+@append
+
+@section('styles')
+<link rel="stylesheet" href="//cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css">
+@append
+
+@section('scripts')
+<script src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+<script src="//cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
+<script>
+$(function() {
+    $('#url-access-logs-table').DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: '{!! route('datatables.data') !!}',
+        columns: [
+            { data: 'created_at', name: 'created_at' },
+            { data: 'ip', name: 'ip' },
+            { 
+                data: 'country.name',
+                name: 'country.name',
+                render: function( data, type, full, meta ) {
+                return '<span class="flag-icon flag-icon-'+full.country_code+'"></span> '+full.country.name;
+                } 
+            },
+            { data: 'url_short', name: 'url_short' },
+            { data: 'url', name: 'url' },
+            { data: 'user_email', name: 'user_email' },
+            { 
+                data: 'userAgent.name',
+                name: 'userAgent.name',
+                render: function( data, type, full, meta ) {
+                    return full.user_agent.name;
+                } 
+            }
+
+        ]
+    });
+});
+</script>
 @append

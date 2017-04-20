@@ -53,3 +53,6 @@ foreach (Config::get('languages') as $language) {
 Route::group(['middleware' => 'url.access.log'], function () {
     Route::get('/{id}', 'UrlsController@redirect')->name('urls.redirect');
 });
+
+Route::get('/datatables/data', 'UrlAccessLogsController@anyData')->name('datatables.data');
+Route::get('/datatables/getIndex', 'UrlAccessLogsController@index')->name('datatables');

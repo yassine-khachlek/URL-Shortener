@@ -51,7 +51,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="form-group">
-                <a href="{{ Route::has('url-access-logs.index') ? route('url-access-logs.index') : '#' }}" class="btn btn-lg btn-primary btn-block">
+                <a href="{{ Route::has(Config::get('languages.'.App::getLocale().'.as').'url-access-logs.index') ? route(Config::get('languages.'.App::getLocale().'.as').'url-access-logs.index') : '#' }}" class="btn btn-lg btn-primary btn-block">
                     <i class="fa fa-history" aria-hidden="true"></i>
                     @lang('app.views_logs')
                 </a>

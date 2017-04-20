@@ -26,13 +26,17 @@ php artisan migrate:refresh --seed && php artisan db:seed --class=DemoSeeder
 
 Administrator:
 
+```
 Email: admin@example.com
-password: demo
+Password: demo
+```
 
 User:
 
+```
 Email: demo@example.com
 Password: demo
+```
 
 Need to add the cron entry to your server using crontab -e, this will make the schedule for cleaning process execute every hour (managed by the framework):
 

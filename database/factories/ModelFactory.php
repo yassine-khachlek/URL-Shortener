@@ -46,10 +46,10 @@ $factory->define(App\Url::class, function (Faker\Generator $faker) {
 });
 
 $factory->define(App\UserAgent::class, function (Faker\Generator $faker) {
-    static $user_agent;
+    static $name;
 
     return [
-        'user_agent' => $user_agent ?: $faker->userAgent,
+        'name' => $name ?: $faker->userAgent,
     ];
 });
 

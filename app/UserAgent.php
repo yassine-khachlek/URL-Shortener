@@ -12,6 +12,6 @@ class UserAgent extends Model
      * @var array
      */
     protected $fillable = [
-        'user_agent',
+        'name',
     ];
 }

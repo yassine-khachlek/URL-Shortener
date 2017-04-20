@@ -15,7 +15,7 @@ class CreateUserAgentsTable extends Migration
     {
         Schema::create((new App\UserAgent)->getTable(), function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->text('user_agent');
+            $table->text('name');
             $table->timestamps();
         });
     }

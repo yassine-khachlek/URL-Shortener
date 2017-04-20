@@ -42,8 +42,8 @@ class UrlAccessLog
             //$url_access_log->url()->associate($url);
 
             $user_agent = UserAgent::firstOrCreate(
-                    ['user_agent' => $request->header('User-Agent')],
-                    ['user_agent' => $request->header('User-Agent')]
+                    ['name' => $request->header('User-Agent')],
+                    ['name' => $request->header('User-Agent')]
                 );
 
             $url_access_log->userAgent()->associate($user_agent);
