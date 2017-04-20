@@ -77,6 +77,9 @@
 <script>
 $(function() {
     $('#url-access-logs-table').DataTable({
+        language: {
+            "url": "{{ asset('components/datatables-i18n/i18n/'.App::getLocale().'.json') }}"
+        },
         processing: true,
         serverSide: true,
         ajax: '{{ Route::has(Config::get('languages.'.App::getLocale().'.as').'url-access-logs.datatables.data') ? route(Config::get('languages.'.App::getLocale().'.as').'url-access-logs.datatables.data') : '#' }}',
