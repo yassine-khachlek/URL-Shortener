@@ -1,6 +1,6 @@
 <?php
 
-function localizedRoute($language_code, $route_name = null, $parameters = null) {
+function route_lang($language_code, $route_name = null, $parameters = null) {
 	
 	$route_name = $route_name ?: Route::currentRouteName();
 

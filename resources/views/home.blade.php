@@ -15,7 +15,7 @@
                     </div>
                 </div>
             </div>
-            <a href="{{ Route::has('urls.index') ? route('urls.index') : '#' }}">
+            <a href="{{ route_lang(App::getLocale(), 'urls.index') }}">
                 <div class="panel-footer">
                     <span class="pull-left">@lang('app.view_details')</span>
                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -51,7 +51,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="form-group">
-                <a href="{{ Route::has(Config::get('languages.'.App::getLocale().'.as').'url-access-logs.index') ? route(Config::get('languages.'.App::getLocale().'.as').'url-access-logs.index') : '#' }}" class="btn btn-lg btn-primary btn-block">
+                <a href="{{ route_lang(App::getLocale(), 'url-access-logs.index') }}" class="btn btn-lg btn-primary btn-block">
                     <i class="fa fa-history" aria-hidden="true"></i>
                     @lang('app.views_logs')
                 </a>

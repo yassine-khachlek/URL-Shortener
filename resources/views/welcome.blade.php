@@ -72,10 +72,10 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @if (Auth::check())
-                        <a href="{{ Route::has(Config::get('languages.'.App::getLocale().'.as').'home') ? route(Config::get('languages.'.App::getLocale().'.as').'home') : '#' }}">@lang('app.home')</a>
+                        <a href="{{ route_lang(App::getLocale(), 'home') }}">@lang('app.home')</a>
                     @else
-                        <a href="{{ Route::has(Config::get('languages.'.App::getLocale().'.as').'login') ? route(Config::get('languages.'.App::getLocale().'.as').'login') : '#' }}">@lang('app.login')</a>
-                        <a href="{{ Route::has(Config::get('languages.'.App::getLocale().'.as').'register') ? route(Config::get('languages.'.App::getLocale().'.as').'register') : '#' }}">@lang('app.register')</a>
+                        <a href="{{ route_lang(App::getLocale(), 'login') }}">@lang('app.login')</a>
+                        <a href="{{ route_lang(App::getLocale(), 'register') }}">@lang('app.register')</a>
                     @endif
                 </div>
             @endif
@@ -91,7 +91,7 @@
                     as $key => $language
                 )
 
-                    <a href="{{ Route::has($language['as'].'welcome') ? route($language['as'].'welcome') : '#' }}">
+                    <a href="{{ route_lang($key, 'welcome') }}">
 
                             @if($language['flag'])
                             <span class="flag-icon flag-icon-{{ $language['flag'] }}"></span>

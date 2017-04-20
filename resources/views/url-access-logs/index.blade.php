@@ -82,7 +82,7 @@ $(function() {
         },
         processing: true,
         serverSide: true,
-        ajax: '{{ Route::has(Config::get('languages.'.App::getLocale().'.as').'url-access-logs.datatables.data') ? route(Config::get('languages.'.App::getLocale().'.as').'url-access-logs.datatables.data') : '#' }}',
+        ajax: '{{ route_lang(App::getLocale(), 'url-access-logs.datatables.data') }}',
         columns: [
             { data: 'created_at', name: 'created_at' },
             { data: 'ip', name: 'ip' },

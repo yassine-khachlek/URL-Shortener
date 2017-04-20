@@ -73,7 +73,7 @@ class UrlsController extends Controller
 
         $url->save();
 
-        return redirect(route('urls.index'));
+        return redirect(route_lang(\App::getLocale(), 'urls.index'));
     }
 
     /**
@@ -103,6 +103,6 @@ class UrlsController extends Controller
 
         $url->delete();
 
-        return redirect(route('urls.index'));
+        return redirect(route_lang(\App::getLocale(), 'urls.index'));
     }
 }

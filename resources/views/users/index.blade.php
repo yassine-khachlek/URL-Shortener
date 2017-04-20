@@ -29,7 +29,7 @@
                 {{ $user->email }}
             </td>
             <td>
-				<form action="{{ Route::has('users.destroy') ? route('users.destroy', ['id' => $url->id]) : '#' }}" method="POST" onsubmit="return confirm('@lang('app.do_you_really_want_to_delete_the_user')');" class="form-inline pull-right">
+				<form action="{{ route_lang(App::getLocale(), 'users.destroy', ['id' => $url->id]) }}" method="POST" onsubmit="return confirm('@lang('app.do_you_really_want_to_delete_the_user')');" class="form-inline pull-right">
 					{{ method_field('DELETE') }}
 					{{ csrf_field() }}
 					<button type="submit" class="btn btn-lg btn-danger">

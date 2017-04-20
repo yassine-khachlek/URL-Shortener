@@ -28,7 +28,7 @@
             "App\\": "app/"
         },
         "files": [
-            "app/Helpers/Url.php"
+            "app/Helpers/Route.php"
         ]
     },
     "autoload-dev": {

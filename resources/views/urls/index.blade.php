@@ -21,7 +21,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="form-group">
-                    <a href="{{ Route::has('urls.create') ? route('urls.create') : '#' }}" class="btn btn-lg btn-success btn-block">
+                    <a href="{{ route_lang(App::getLocale(), 'urls.create') }}" class="btn btn-lg btn-success btn-block">
                         <i class="fa fa-plus" aria-hidden="true"></i>
                     </a>
                 </div>
@@ -67,7 +67,7 @@
                 {{ $url->views_count }}
             </td>
             <td style="min-width: 150px;">
-				<form action="{{ Route::has('urls.destroy') ? route('urls.destroy', ['id' => $url->id]) : '#' }}" method="POST" onsubmit="return confirm('Do you really want to delete the url?');" class="form-inline pull-right">
+				<form action="{{ route_lang(App::getLocale(), 'urls.destroy', ['id' => $url->id]) }}" method="POST" onsubmit="return confirm('Do you really want to delete the url?');" class="form-inline pull-right">
 					{{ method_field('DELETE') }}
 					{{ csrf_field() }}
 					<button type="submit" class="btn btn-lg btn-danger">

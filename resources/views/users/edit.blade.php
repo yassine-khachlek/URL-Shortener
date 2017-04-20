@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<form action="{{ Route::has('users.update') ? route('users.update', ['id' => $user->id]) : '#' }}" method="POST">
+<form action="{{ route_lang(App::getLocale(), 'users.update') }}" method="POST">
 	{{ method_field('PATCH') }}
 	{{ csrf_field() }}
 
@@ -48,7 +48,7 @@
   <div class="row">
     <div class="col-md-6">
       <div class="form-group">
-        <a href="{{ Route::has('home') ? route('home') : '#' }}" class="btn btn-lg btn-block btn-default">
+        <a href="{{ route_lang(App::getLocale(), 'home') }}" class="btn btn-lg btn-block btn-default">
            @lang('app.cancel')
         </a>
       </div>

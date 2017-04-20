@@ -74,7 +74,7 @@
                 	{{-- Oh!, It's gone :( --}}
                     @lang('app.oh_its_gone')
                 	<div class="links">
-                        <a href="{{ Route::has(Config::get('languages.'.App::getLocale().'.as').'home') ? route(Config::get('languages.'.App::getLocale().'.as').'home') : '#' }}">
+                        <a href="{{ route_lang(App::getLocale(), 'home') }}">
                             @lang('app.home')
                         </a>
                     </div>

@@ -8,7 +8,7 @@
   </div>
 </div>
 
-<form action="{{ Route::has(Config::get('languages.'.App::getLocale().'.as').'urls.store') ? route(Config::get('languages.'.App::getLocale().'.as').'urls.store') : '#' }}" method="POST">
+<form action="{{ route_lang(App::getLocale(), 'urls.store') }}" method="POST">
 	{{ method_field('POST') }}
 	{{ csrf_field() }}
 
@@ -25,7 +25,7 @@
 	<div class="row">
 		<div class="col-md-6">
 			<div class="form-group">
-				<a href="{{ Route::has('urls.index') ? route('urls.index') : '#' }}" class="btn btn-lg btn-block btn-default">
+				<a href="{{ route_lang(App::getLocale(), 'urls.index') }}" class="btn btn-lg btn-block btn-default">
 					@lang('app.cancel')
 				</a>
 			</div>
