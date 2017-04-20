@@ -32,6 +32,7 @@
 
 @endif
 
+<div class="table-responsive">
 <table class="table table-striped table-hover">
     <thead>
         <th>
@@ -65,7 +66,7 @@
             <td>
                 {{ $url->views_count }}
             </td>
-            <td>
+            <td style="min-width: 150px;">
 				<form action="{{ Route::has('urls.destroy') ? route('urls.destroy', ['id' => $url->id]) : '#' }}" method="POST" onsubmit="return confirm('Do you really want to delete the url?');" class="form-inline pull-right">
 					{{ method_field('DELETE') }}
 					{{ csrf_field() }}
@@ -82,6 +83,7 @@
     @endforeach
     </tbody>
 </table>
+</div>
 
 @if( method_exists($urls, 'links') )
     {{ $urls->links() }}
