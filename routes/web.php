@@ -42,6 +42,9 @@ foreach (Config::get('languages') as $language) {
 
             Route::group(['prefix' => 'url-access-logs', 'as' => 'url-access-logs.'], function () {
                 Route::get('/', 'UrlAccessLogsController@index')->name('index');
+                Route::get('/datatables/data', 'UrlAccessLogsController@datatables')->name('datatables.data');
+                //Route::get('/datatables/getIndex', 'UrlAccessLogsController@index')->name('datatables');
+
             });
         });
     });
@@ -53,6 +56,3 @@ foreach (Config::get('languages') as $language) {
 Route::group(['middleware' => 'url.access.log'], function () {
     Route::get('/{id}', 'UrlsController@redirect')->name('urls.redirect');
 });
-
-Route::get('/datatables/data', 'UrlAccessLogsController@anyData')->name('datatables.data');
-Route::get('/datatables/getIndex', 'UrlAccessLogsController@index')->name('datatables');

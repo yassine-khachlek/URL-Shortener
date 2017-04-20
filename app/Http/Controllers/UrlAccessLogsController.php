@@ -27,8 +27,10 @@ class UrlAccessLogsController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function anyData()
+    public function datatables()
     {
+        $this->authorize('datatables', UrlAccessLog::class);
+        
         $query = UrlAccessLog::with('country', 'userAgent');
 
         return Datatables::of($query)->make(true);

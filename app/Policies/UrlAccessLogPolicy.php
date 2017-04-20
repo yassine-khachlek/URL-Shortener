@@ -21,4 +21,9 @@ class UrlAccessLogPolicy
     {
         return $user->is_admin;
     }
+
+    public function datatables(User $user)
+    {
+        return $user->is_admin;
+    }
 }

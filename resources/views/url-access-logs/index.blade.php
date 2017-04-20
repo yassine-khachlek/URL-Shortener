@@ -79,7 +79,7 @@ $(function() {
     $('#url-access-logs-table').DataTable({
         processing: true,
         serverSide: true,
-        ajax: '{!! route('datatables.data') !!}',
+        ajax: '{{ Route::has(Config::get('languages.'.App::getLocale().'.as').'url-access-logs.datatables.data') ? route(Config::get('languages.'.App::getLocale().'.as').'url-access-logs.datatables.data') : '#' }}',
         columns: [
             { data: 'created_at', name: 'created_at' },
             { data: 'ip', name: 'ip' },
