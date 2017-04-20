@@ -74,6 +74,10 @@ Password: demo
 
 Please always verify the directories permission if you got running issues.
 
+## Project progress visualization (in 35 seconds)
+
+[![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/4Lwuz0ttXUI/0.jpg)](http://www.youtube.com/watch?v=4Lwuz0ttXUI)
+
 
 ### Contact:
 
