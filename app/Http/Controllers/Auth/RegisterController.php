@@ -27,7 +27,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = 'home';
 
     /**
      * Create a new controller instance.
@@ -36,6 +36,8 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
+        $this->redirectTo = route_lang(\App::getLocale(), $this->redirectTo);
+
         $this->middleware('guest');
     }
 
