@@ -10,11 +10,29 @@ Migrate the database:
 php artisan migrate:refresh --seed
 ```
 
-To install demo data:
+To install demo data including the demo accounts:
 
 ```shell
 php artisan db:seed --class=DemoSeeder
 ```
+
+Or simpler just run both for first time install:
+
+```shell
+php artisan migrate:refresh --seed && php artisan db:seed --class=DemoSeeder
+```
+
+## Demo accounts:
+
+Administrator:
+
+Email: admin@example.com
+password: demo
+
+User:
+
+Email: demo@example.com
+Password: demo
 
 Need to add the cron entry to your server using crontab -e, this will make the schedule for cleaning process execute every hour (managed by the framework):
 
