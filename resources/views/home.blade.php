@@ -34,7 +34,7 @@
           <div class="panel-body">
             @include('commons.widgets.charts.chartjs.line', [
                 'id'    =>  'my_url_views',
-                'label' =>  trans('app.url_views'),
+                'label' =>  trans('app.urls_views'),
                 'labels'=>  Auth::user()->urls()->get()->map(function($item){
                                 return $item->url_short;
                             }),

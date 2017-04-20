@@ -7,7 +7,7 @@
 	{{ csrf_field() }}
 
 	<div class="form-group{{ $errors->has('url') ? ' has-error' : '' }}">
-      	<input name="url" type="text" value="{{ old('url') }}" class="form-control" placeholder="Url">
+      	<input name="url" type="text" value="{{ old('url') }}" class="form-control" placeholder="@lang('app.url')">
       	
         @if ($errors->has('url'))
             <span class="help-block">

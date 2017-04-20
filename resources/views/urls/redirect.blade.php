@@ -5,7 +5,7 @@
 </head>
 <body>
 	<div id="info">
-		@lang('app.redirect_after_x_seconds', ['seconds' => 3])
+		@lang('app.redirect_after') 3 @lang('app.seconds')
 	</div>
 	<script type="text/javascript">
 		var redirectAfter = 3;
@@ -18,7 +18,7 @@
 				clearInterval(interval);
 			}
 
-			document.getElementById('info').innerHTML= 'Redirect after ' + redirectAfter + ' seconds...';
+			document.getElementById('info').innerHTML= '@lang('app.redirect_after') ' + redirectAfter + ' @lang('app.seconds')...';
 
 		}, 1000);
 	</script>
