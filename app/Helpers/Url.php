@@ -1,6 +1,6 @@
 <?php
 
-function localizedRoute($language_code, $route_name = null) {
+function localizedRoute($language_code, $route_name = null, $parameters = null) {
 	
 	$route_name = $route_name ?: Route::currentRouteName();
 
@@ -18,6 +18,5 @@ function localizedRoute($language_code, $route_name = null) {
 
 	$route_name = implode('.', $route_name);
 
-	return route($route_name);
-
+	return $parameters ? route($route_name, $parameters): route($route_name);
 }
