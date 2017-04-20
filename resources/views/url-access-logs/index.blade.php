@@ -4,25 +4,25 @@
 <table class="table table-striped table-hover">
     <thead>
         <th>
-            DATE TIME
+            @lang('app.date_time')
         </th>
         <th>
-            IP
+            @lang('app.ip')
         </th>
         <th>
-        	COUNTRY
+        	@lang('app.country')
         </th>
         <th>
-            URL SHORT
+            @lang('app.url_short')
         </th>
         <th>
-        	URL
+        	@lang('app.url')
         </th>
         <th>
-        	USER
+        	@lang('app.user')
         </th>
         <th>
-        	USER AGENT
+        	@lang('app.user_agent')
         </th>
     </thead>
     <tbody>

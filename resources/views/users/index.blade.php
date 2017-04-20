@@ -4,13 +4,13 @@
 <table class="table table-striped table-hover">
     <thead>
         <th>
-            ID
+            @lang('app.id')
         </th>
         <th>
-            NAME
+            @lang('app.name')
         </th>
         <th>
-            EMAIL
+            @lang('app.email')
         </th>
         <th>
 
@@ -29,7 +29,7 @@
                 {{ $user->email }}
             </td>
             <td>
-				<form action="{{ Route::has('users.destroy') ? route('users.destroy', ['id' => $url->id]) : '#' }}" method="POST" onsubmit="return confirm('Do you really want to delete the user?');" class="form-inline pull-right">
+				<form action="{{ Route::has('users.destroy') ? route('users.destroy', ['id' => $url->id]) : '#' }}" method="POST" onsubmit="return confirm('@lang('app.do_you_really_want_to_delete_the_user')');" class="form-inline pull-right">
 					{{ method_field('DELETE') }}
 					{{ csrf_field() }}
 					<button type="submit" class="btn btn-lg btn-danger">
@@ -48,8 +48,6 @@
 @append
 
 @section('styles')
-<link href="{{ asset('components/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
-
 <style type="text/css">
     .table :last-child > a {
         margin-left: 8px;

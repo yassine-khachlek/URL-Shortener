@@ -20,14 +20,14 @@
 		<div class="col-md-6">
 			<div class="form-group">
 				<a href="{{ Route::has('urls.index') ? route('urls.index') : '#' }}" class="btn btn-lg btn-block btn-default">
-					CANCEL
+					@lang('app.cancel')
 				</a>
 			</div>
 		</div>
 		<div class="col-md-6">
 			<div class="form-group">
 				<button type="submit" class="btn btn-danger btn-block btn-lg">
-					SAVE
+					@lang('app.save')
 				</button>
 			</div>
 		</div>

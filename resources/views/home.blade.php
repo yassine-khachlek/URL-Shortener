@@ -11,13 +11,13 @@
                     </div>
                     <div class="col-xs-9 text-right">
                         <div class="huge">{{ Auth::user()->urls()->count() }} / {{ Config::get('url.limit_per_user') }}</div>
-                        <div>Urls!</div>
+                        <div>@lang('app.urls')!</div>
                     </div>
                 </div>
             </div>
             <a href="{{ Route::has('urls.index') ? route('urls.index') : '#' }}">
                 <div class="panel-footer">
-                    <span class="pull-left">View Details</span>
+                    <span class="pull-left">@lang('app.view_details')</span>
                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                     <div class="clearfix"></div>
                 </div>
@@ -29,12 +29,12 @@
         <div class="panel panel-default">
           <div class="panel-heading">
             <i class="fa fa-line-chart" aria-hidden="true"></i>
-            Urls views
+            @lang('app.urls_views')
           </div>
           <div class="panel-body">
             @include('commons.widgets.charts.chartjs.line', [
                 'id'    =>  'my_url_views',
-                'label' =>  'URL views',
+                'label' =>  trans('app.url_views'),
                 'labels'=>  Auth::user()->urls()->get()->map(function($item){
                                 return $item->url_short;
                             }),
@@ -53,7 +53,7 @@
             <div class="form-group">
                 <a href="{{ Route::has('url-access-logs.index') ? route('url-access-logs.index') : '#' }}" class="btn btn-lg btn-primary btn-block">
                     <i class="fa fa-history" aria-hidden="true"></i>
-                    Views logs
+                    @lang('app.views_logs')
                 </a>
             </div>
         </div>

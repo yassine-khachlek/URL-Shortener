@@ -71,9 +71,12 @@
         <div class="flex-center position-ref full-height">
             <div class="content">
                 <div class="title m-b-md">
-                	Oh!, It's gone :(
+                	{{-- Oh!, It's gone :( --}}
+                    @lang('app.oh_its_gone')
                 	<div class="links">
-                        <a href="{{ Route::has(Config::get('languages.'.App::getLocale().'.as').'home') ? route(Config::get('languages.'.App::getLocale().'.as').'home') : '#' }}">Home</a>
+                        <a href="{{ Route::has(Config::get('languages.'.App::getLocale().'.as').'home') ? route(Config::get('languages.'.App::getLocale().'.as').'home') : '#' }}">
+                            @lang('app.home')
+                        </a>
                     </div>
                     {{-- $exception->getMessage() --}}
                 </div>

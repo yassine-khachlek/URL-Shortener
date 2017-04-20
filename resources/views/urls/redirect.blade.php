@@ -5,7 +5,7 @@
 </head>
 <body>
 	<div id="info">
-		Redirect after 3 seconds...
+		@lang('app.redirect_after_x_seconds', ['seconds' => 3])
 	</div>
 	<script type="text/javascript">
 		var redirectAfter = 3;

@@ -35,16 +35,16 @@
 <table class="table table-striped table-hover">
     <thead>
         <th>
-            ID
+            @lang('app.id')
         </th>
         <th>
-            URL SHORT
+            @lang('app.url_short')
         </th>
         <th>
-            URL
+            @lang('app.url')
         </th>
         <th>
-            Views
+            @lang('app.views')
         </th>
         <th>
 

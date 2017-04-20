@@ -72,10 +72,10 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @if (Auth::check())
-                        <a href="{{ Route::has(Config::get('languages.'.App::getLocale().'.as').'home') ? route(Config::get('languages.'.App::getLocale().'.as').'home') : '#' }}">Home</a>
+                        <a href="{{ Route::has(Config::get('languages.'.App::getLocale().'.as').'home') ? route(Config::get('languages.'.App::getLocale().'.as').'home') : '#' }}">@lang('app.home')</a>
                     @else
-                        <a href="{{ Route::has(Config::get('languages.'.App::getLocale().'.as').'login') ? route(Config::get('languages.'.App::getLocale().'.as').'login') : '#' }}">Login</a>
-                        <a href="{{ Route::has(Config::get('languages.'.App::getLocale().'.as').'register') ? route(Config::get('languages.'.App::getLocale().'.as').'register') : '#' }}">Register</a>
+                        <a href="{{ Route::has(Config::get('languages.'.App::getLocale().'.as').'login') ? route(Config::get('languages.'.App::getLocale().'.as').'login') : '#' }}">@lang('app.login')</a>
+                        <a href="{{ Route::has(Config::get('languages.'.App::getLocale().'.as').'register') ? route(Config::get('languages.'.App::getLocale().'.as').'register') : '#' }}">@lang('app.register')</a>
                     @endif
                 </div>
             @endif
@@ -102,16 +102,6 @@
 
                 @endforeach
                 </div>
-
-                {{--
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
-                --}}
             </div>
         </div>
     </body>
