@@ -16,7 +16,24 @@ class UsersController extends Controller
      */
     public function index()
     {
+        $this->authorize('index', User::class);
+
         return view('users.index', ['users' => User::paginate(15)]);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $user = User::findOrfail($id);
+
+        $this->authorize('edit', $user);
+
+        return view('users.edit', compact('user'));
     }
 
     /**
@@ -29,6 +46,8 @@ class UsersController extends Controller
     public function update(Request $request, $id)
     {
         $user = User::findOrFail($id);
+
+        $this->authorize('update', $user);
 
         $validator = Validator::make($request->all(), [
             'name' => 'required|min:1',

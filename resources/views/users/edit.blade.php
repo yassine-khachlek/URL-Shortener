@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<form action="{{ route_lang(App::getLocale(), 'users.update') }}" method="POST">
+<form action="{{ route_lang(App::getLocale(), 'users.update', ['id' => $user->id]) }}" method="POST">
 	{{ method_field('PATCH') }}
 	{{ csrf_field() }}
 

@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use App\Policies\UrlAccessLogPolicy;
 use App\Policies\UrlPolicy;
+use App\Policies\UserPolicy;
+use App\User;
 use App\Url;
 use App\UrlAccessLog;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
@@ -17,6 +19,7 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         'App\Model' => 'App\Policies\ModelPolicy',
+        User::class => UserPolicy::class,
         Url::class => UrlPolicy::class,
         UrlAccessLog::class => UrlAccessLogPolicy::class,
     ];

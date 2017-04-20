@@ -16,7 +16,7 @@
 			        as $key => $language
 			    )
 			    	@if($key != App::getLocale())
-		                <a href="{{ route_lang($key) }}">
+		                <a href="{{ Route::current()->parameters() ? route_lang($key, null, Route::current()->parameters()) : route_lang($key) }}">
 							@if($language['flag'])
 							<span class="flag-icon flag-icon-{{ $language['flag'] }}"></span>
 							@endif
