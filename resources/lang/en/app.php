@@ -32,6 +32,5 @@ return [
     'user_agent' => 'User Agent',
     'your_profile' => 'Your profile',
     'logout' => 'Logout',
-
-
+    'oh_its_gone' => 'Oh!, it\'s gone :(',
 ];

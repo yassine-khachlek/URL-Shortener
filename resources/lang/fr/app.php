@@ -32,6 +32,5 @@ return [
     'user_agent' => 'Agent utilisateur',
     'your_profile' => 'Votre profil',
     'logout' => 'Déconnexion',
-
-
+    'oh_its_gone' => 'Oh !, c\'est parti :(',
 ];
