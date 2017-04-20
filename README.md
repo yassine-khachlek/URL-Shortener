@@ -22,6 +22,12 @@ Or simpler just run both for first time install:
 php artisan migrate:refresh --seed && php artisan db:seed --class=DemoSeeder
 ```
 
+Need to add the cron entry to your server using crontab -e, this will make the schedule for cleaning process execute every hour (managed by the framework):
+
+```
+* * * * * php /path-to-your-project/artisan schedule:run >> /dev/null 2>&1
+```
+
 ## Demo accounts:
 
 Administrator:
@@ -38,8 +44,3 @@ Email: demo@example.com
 Password: demo
 ```
 
-Need to add the cron entry to your server using crontab -e, this will make the schedule for cleaning process execute every hour (managed by the framework):
-
-```
-* * * * * php /path-to-your-project/artisan schedule:run >> /dev/null 2>&1
-```

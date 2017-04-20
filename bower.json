@@ -19,6 +19,8 @@
     "bootstrap": "^3.3.7",
     "flag-icon-css": "^2.8.0",
     "chart.js": "^2.5.0",
-    "bootstrap-switch": "^3.3.4"
+    "bootstrap-switch": "^3.3.4",
+    "datatables.net": "^1.10.15",
+    "datatables.net-bs": "^2.1.1"
   }
 }

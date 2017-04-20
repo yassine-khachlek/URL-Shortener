@@ -68,12 +68,12 @@
 @append
 
 @section('styles')
-<link rel="stylesheet" href="//cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css">
+<link rel="stylesheet" href="{{ asset('components/datatables.net-bs/css/dataTables.bootstrap.min.css') }}">
 @append
 
 @section('scripts')
-<script src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
-<script src="//cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
+<script src="{{ asset('components/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('components/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
 <script>
 $(function() {
     $('#url-access-logs-table').DataTable({
